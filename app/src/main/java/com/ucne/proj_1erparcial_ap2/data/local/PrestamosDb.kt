@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.ucne.proj_1erparcial_ap2.data.local.dao.PrestamosDao
 import com.ucne.proj_1erparcial_ap2.data.local.entity.PrestamosEntity
 
-@Database(
+@Database(               // Base de datos
     entities = [
         PrestamosEntity::class
     ],

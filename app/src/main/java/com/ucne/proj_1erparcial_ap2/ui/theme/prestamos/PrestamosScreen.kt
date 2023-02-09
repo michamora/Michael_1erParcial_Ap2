@@ -23,36 +23,37 @@ import com.ucne.proj_1erparcial_ap2.data.local.entity.PrestamosEntity
 @Composable
 fun PrestamosScreen(viewModel: PrestamosViewModel = hiltViewModel()) {
 
-        Column(
-            Modifier
-                .fillMaxSize()
+    Column(
+        Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+    ) {
+
+        Text(
+            text = "Registro de Prestamos", fontSize = 32.sp, // Titulo inicial
+            modifier = Modifier
+                .fillMaxWidth()
                 .wrapContentSize(Alignment.Center)
-        ) {
+        )
 
-            Text(
-                text = "Registro de Prestamos", fontSize = 32.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentSize(Alignment.Center)
-            )
+        Spacer(modifier = Modifier.padding(6.dp))
 
-            Spacer(modifier = Modifier.padding(6.dp))
+        PrestamosBody(viewModel)
 
-            PrestamosBody(viewModel)
-
-            Spacer(modifier = Modifier.padding(12.dp))
-            Text(
-                text = "Lista de Prestamos", fontSize = 32.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentSize(Alignment.Center)
-            )
-            Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(12.dp))
+        Text(
+            text = "Lista de Prestamos", fontSize = 32.sp, // Consulta de prestamos
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.Center)
+        )
+        Spacer(modifier = Modifier.padding(8.dp))
 
         val uiState by viewModel.uiState.collectAsState()
         PrestamosListaScreen(uiState.prestamosList)
     }
 }
+
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun PrestamosBody(
@@ -60,12 +61,12 @@ private fun PrestamosBody(
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
 
-        OutlinedTextField(
+        OutlinedTextField( // Campo deudor
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
             value = viewModel.deudor,
-            onValueChange = {  viewModel.deudor = it },
+            onValueChange = { viewModel.deudor = it },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.TwoTone.Person,
@@ -78,12 +79,12 @@ private fun PrestamosBody(
             label = { Text("Deudor") }
         )
 
-        OutlinedTextField(
+        OutlinedTextField( // Campo concepto
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
             value = viewModel.concepto,
-            onValueChange = {  viewModel.concepto = it },
+            onValueChange = { viewModel.concepto = it },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.TwoTone.Article,
@@ -96,7 +97,7 @@ private fun PrestamosBody(
             label = { Text("Concepto") }
         )
 
-        OutlinedTextField(
+        OutlinedTextField( // Campo monto
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
@@ -116,11 +117,12 @@ private fun PrestamosBody(
 
         Spacer(modifier = Modifier.padding(6.dp))
 
-        ExtendedFloatingActionButton(
+        ExtendedFloatingActionButton( // Boton guardar
+
             modifier = Modifier.align(Alignment.CenterHorizontally),
             contentColor = Color(0xFF272727),
             text = { Text("Guardar") },
-            icon = { Icon(imageVector = Icons.TwoTone.Save , contentDescription = "Guardar") },
+            icon = { Icon(imageVector = Icons.TwoTone.Save, contentDescription = "Guardar") },
             onClick = { viewModel.insertar() }
         )
     }
@@ -136,9 +138,8 @@ private fun PrestamosListaScreen(prestamosList: List<PrestamosEntity>) {
 }
 
 
-
 @Composable
-private fun PrestamosFila(prestamos: PrestamosEntity) {
+private fun PrestamosFila(prestamos: PrestamosEntity) { // Lista de los prestamos
 
     Column(
         Modifier
@@ -149,7 +150,6 @@ private fun PrestamosFila(prestamos: PrestamosEntity) {
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-
 
             Text(
                 text = prestamos.deudor,

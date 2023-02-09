@@ -7,18 +7,16 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PrestamosDao {
 
-
         @Insert(onConflict = OnConflictStrategy.REPLACE)
-        suspend fun insert(prestamos: PrestamosEntity)
+        suspend fun insert(prestamos: PrestamosEntity) //Guardar
 
-        @Query(""" 
+        @Query("""                           
             Select * From Prestamos
             Order By prestamosId desc
         """)
-        fun getList(): Flow<List<PrestamosEntity>>
+        fun getList(): Flow<List<PrestamosEntity>>  //Obtener lista
 
     }
-
     class dao{
         fun save():Boolean{
             return true

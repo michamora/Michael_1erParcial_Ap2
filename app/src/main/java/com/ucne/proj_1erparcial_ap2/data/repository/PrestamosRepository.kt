@@ -11,6 +11,5 @@ class PrestamosRepository@Inject constructor(
     suspend fun insert(prestamos: PrestamosEntity) {
         return prestamosDao.insert(prestamos)
     }
-
     fun getList(): Flow<List<PrestamosEntity>> = prestamosDao.getList()
 }
