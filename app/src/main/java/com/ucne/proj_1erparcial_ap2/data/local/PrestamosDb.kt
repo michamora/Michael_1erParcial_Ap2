@@ -9,7 +9,7 @@ import com.ucne.proj_1erparcial_ap2.data.local.entity.PrestamosEntity
     entities = [
         PrestamosEntity::class
     ],
-    version = 1
+    version = 3
 )
 abstract class PrestamosDb: RoomDatabase() {
     abstract val prestamosDao: PrestamosDao
