@@ -12,5 +12,6 @@ data class PrestamosEntity( // Entidad
     val prestamosId: Int? = null,
     val deudor: String,
     val concepto: String,
+    val nota: String = "",
     val monto: Double
 )
